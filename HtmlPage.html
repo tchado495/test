@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> HTML5 WebSocket with SSaurel's Blog</title>
+    <style type="text/css">
+        #content {
+            width: 400x;
+            margin: 0 auto;
+            border: 1px dotted black;
+            margin-top: 200px;
+            font-size: 17px;
+            text-align: center;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        #msg {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h2>HTML5 WebSocket with SSaurl4s Blog</h2>
+        <button onclick="sendWebSocketMsg();">Send WebSocket Msg</button>
+        <div id="msgs" />
+    </div>
+    <script type="text/javascript">
+        var msgs = document.getElementById("msgs");
+        function log(msg) {
+            msgs.innerHTML += msg + "<br/><br/>";
+        }
+        function sendWebSocketMsg() {
+            if ("WebSocket" in window) {
+                log("WebSocket is supported by your browser");
+                var ws = new WebSocket("wss://echo.websocket.org");
+                ws.onopen = function () {
+                    var msg = "hello from ssaurel blog !";
+                    log("connection opened with echo websocket server");
+                    ws.send(msg);
+                    log("Message sent :" + msg);
+                };
+                ws.onmessage = function (evt) {
+                    var receivedMsg = evt.data;
+                    log("Message received :" + receivedMsg);
+                };
+                ws.onclose = function () {
+                    log("Connection is closed with echo websocket server");
+                }
+
+            } else {
+                log("websocket is not supported by your browser");
+            }
+        }
+
+    </script>
+</body>
+<html>
