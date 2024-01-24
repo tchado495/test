@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -25,6 +25,7 @@
     <div id="content">
         <h2>HTML5 WebSocket with SSaurl4s Blog</h2>
         <button onclick="sendWebSocketMsg();">Send WebSocket Msg</button>
+        <button onclick="activeWebSocketMsg();">WebSocket</button>
         <div id="msgs" />
     </div>
     <script type="text/javascript">
@@ -53,6 +54,17 @@
             } else {
                 log("websocket is not supported by your browser");
             }
+        }
+        function activeWebSocketMsg() {
+            const ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
+
+            ws.addEventListener("open", () => {
+                log("We are connected!");
+                ws.send("Hey, how's it going?");
+            });
+            ws.addEventListener("message", ({ data }) => {
+                log(data);
+            });
         }
 
     </script>
