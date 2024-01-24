@@ -27,17 +27,10 @@
         <button onclick="sendWebSocketMsg();">Send WebSocket Msg</button>
         <div id="msgs" />
     </div>
-    <div id="contents">
-        <button onclick="activeWebSocketMsg();">WebSocket</button>
-        <div id="msgss" />
-    </div>
     <script type="text/javascript">
-        var msgs = document.getElementById("msgs"); var msgss = document.getElementById("msgss");
+        var msgs = document.getElementById("msgs");
         function log(msg) {
             msgs.innerHTML += msg + "<br/><br/>";
-        }
-        function logs(msg) {
-            msgss.innerHTML += msg + "<br/><br/>";
         }
         function sendWebSocketMsg() {
             if ("WebSocket" in window) {
@@ -59,21 +52,6 @@
 
             } else {
                 log("websocket is not supported by your browser");
-            }
-        }
-        function activeWebSocketMsg() {
-            if ("WebSocket" in window) {
-                logs("WebSocket is supported by your active browser");
-                const ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
-                ws.addEventListener("open", () => {
-                    logs("We are connected!");
-                    ws.send("Hey, how's it going?");
-                });
-                ws.addEventListener("message", ({ data }) => {
-                    logs(data);
-                });
-            } else {
-                logs("websocket is not supported by your active browser");
             }
         }
 
