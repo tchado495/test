@@ -24,14 +24,20 @@
 <body>
     <div id="content">
         <h2>HTML5 WebSocket with SSaurl4s Blog</h2>
-        <button onclick="activeWebSocketMsg();">WebSocket</button>
         <button onclick="sendWebSocketMsg();">Send WebSocket Msg</button>
         <div id="msgs" />
     </div>
+    <div id="contents">
+        <button onclick="activeWebSocketMsg();">WebSocket</button>
+        <div id="msgss" />
+    </div>
     <script type="text/javascript">
-        var msgs = document.getElementById("msgs");
+        var msgs = document.getElementById("msgs"); var msgss = document.getElementById("msgss");
         function log(msg) {
             msgs.innerHTML += msg + "<br/><br/>";
+        }
+        function logs(msg) {
+            msgss.innerHTML += msg + "<br/><br/>";
         }
         function sendWebSocketMsg() {
             if ("WebSocket" in window) {
@@ -57,17 +63,17 @@
         }
         function activeWebSocketMsg() {
             if ("WebSocket" in window) {
-                log("WebSocket is supported by your active browser");
+                logs("WebSocket is supported by your active browser");
                 const ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
                 ws.addEventListener("open", () => {
-                    log("We are connected!");
+                    logs("We are connected!");
                     ws.send("Hey, how's it going?");
                 });
                 ws.addEventListener("message", ({ data }) => {
-                    log(data);
+                    logs(data);
                 });
             } else {
-                log("websocket is not supported by your active browser");
+                logs("websocket is not supported by your active browser");
             }
         }
 
