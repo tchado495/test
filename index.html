@@ -111,39 +111,16 @@
 			<button class="send-button" onclick="sendMessage()"> Send </button>
 		</div>node
 
-		<!--binding protocol="http" bindingInformation="*:49724:localhost" />-->
-		<!--binding protocol="https" bindingInformation="*:44320:localhost" />-->
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+		
 		<script>
+			const ws = new WebSocket("https://192.168.43.250:49724");
 
-			var socket;
-			window.onload = function () {
-
-				socket = io.connect('192.168.43.250:49724');
-
-				socket.on('message-from-others', function (message) {
-					var html = '<div class="message-box others-message-box">' +
-						'<div class="message others-message"> ' + message + ' </div>' +
-						'<div class="separator"></div>' +
-						'</div>';
-
-					document.getElementById("message-area").innerHTML += html;
-				})
-			}
-
-			function sendMessage() {
-				var message = document.getElementById("typing-box").value;
-				var html = '<div class="message-box my-message-box">' +
-					'<div class="message my-message"> ' + message + ' </div>' +
-					'<div class="separator"></div>' +
-					'</div>';
-
-				document.getElementById("message-area").innerHTML += html;
-				document.getElementById("typing-box").value = "";
-
-				socket.emit('codeboard-message', message);
-			}
+        		ws.addEventListener("open",() => {
+            		console.log("We are connected!");
+           		 ws.send("Hey, how's it going?");
+        		});
+        		ws.addEventListener("message", ({ data }) => {
+            		console.log(data);
 
 		</script>
 
