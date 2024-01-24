@@ -56,15 +56,18 @@
             }
         }
         function activeWebSocketMsg() {
-            const ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
-
-            ws.addEventListener("open", () => {
-                log("We are connected!");
-                ws.send("Hey, how's it going?");
-            });
-            ws.addEventListener("message", ({ data }) => {
-                log(data);
-            });
+            if ("WebSocket" in window) {
+                const ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
+                ws.addEventListener("open", () => {
+                    log("We are connected!");
+                    ws.send("Hey, how's it going?");
+                });
+                ws.addEventListener("message", ({ data }) => {
+                    log(data);
+                });
+            } else {
+                log("websocket is not supported by your active browser");
+            }
         }
 
     </script>
