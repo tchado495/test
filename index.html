@@ -57,6 +57,7 @@
         }
         function activeWebSocketMsg() {
             if ("WebSocket" in window) {
+                log("WebSocket is supported by your active browser");
                 const ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
                 ws.addEventListener("open", () => {
                     log("We are connected!");
