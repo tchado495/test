@@ -33,7 +33,7 @@
     </div>
     <script type="text/javascript">
         var msgs = document.getElementById("msgs"); var msgss = document.getElementById("msgss");
-        var ws = new WebSocket("wss://echo.websocket.org");
+        //var ws = new WebSocket("wss://echo.websocket.org");
         function log(msg) {
             msgs.innerHTML += msg + "<br/><br/>";
         }
@@ -43,7 +43,7 @@
         function sendWebSocketMsg() {
             if ("WebSocket" in window) {
                 log("WebSocket is supported by your browser");
-                //var ws = new WebSocket("wss://echo.websocket.org");
+                var ws = new WebSocket("wss://echo.websocket.org");
                 ws.onopen = function () {
                     var msg = "hello from ssaurel blog !";
                     log("connection opened with echo websocket server");
@@ -58,6 +58,7 @@
             if ("WebSocket" in window) {
                 logs("WebSocket is supported by your active browser");
                 //const ws = new WebSocket("wss://echo.websocket.org");
+                var ws = new WebSocket("wss://echo.websocket.org");
                 ws.onmessage = function (evt) {
                     var receivedMsg = evt.data;
                     log("Message received :" + receivedMsg);
