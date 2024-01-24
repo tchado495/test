@@ -35,7 +35,7 @@
         function sendWebSocketMsg() {
             if ("WebSocket" in window) {
                 log("WebSocket is supported by your browser");
-                var ws = new WebSocket("wss://echo.websocket.org");
+                var ws = new WebSocket("wss://tchado495.github.io/testwebsocket/index.html");
                 ws.onopen = function () {
                     var msg = "hello from ssaurel blog !";
                     log("connection opened with echo websocket server");
