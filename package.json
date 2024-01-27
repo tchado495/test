@@ -1,0 +1,23 @@
+{
+  "name": "testwebsocket",
+  "version": "0.1.0",
+  "description": "A simple Node app built on fastify, instantly up and running. Built to be remixed on Glitch.com.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^7.4.3"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://github.com/edit/#!/testwebsocket"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "github"
+  ]
+}
