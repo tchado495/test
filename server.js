@@ -4,7 +4,7 @@
 
 //'use strict';
 
-import WebSocket from 'ws'
+import WebSocket from './ws'
 //const WebSocket = require('./websocket');
 
 const PORT = 5000;
