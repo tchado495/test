@@ -5,9 +5,11 @@
 //'use strict';
 //import WebSocket from './ws'
 //const WebSocket = require('./websocket');
-const wsServer = new WebSocket("wss://echo.websocket.org:5000");
-
 const PORT = 5000;
+
+const wsServer = new wsServer({port: PORT}, function(){
+    console.log("WS Server listening on: ws:://localhost", PORT);
+});
 
 //const wsServer = new WebSocket.Server({
 //const wsServer = new ws.Server({
