@@ -3,13 +3,14 @@
 //const WebSocket = require('./ws/lib/websocket.js');
 
 //'use strict';
-
-import WebSocket from './ws'
+//import WebSocket from './ws'
 //const WebSocket = require('./websocket');
+const ws = new WebSocket("wss://echo.websocket.org");
 
 const PORT = 5000;
 
-const wsServer = new WebSocket.Server({
+//const wsServer = new WebSocket.Server({
+const wsServer = new ws.Server({
     port: PORT
 });
 
