@@ -1,6 +1,7 @@
 
 //const WebSocket = require('ws');
-const WebSocket = require('./ws/lib/websocket.js');
+//const WebSocket = require('./ws/lib/websocket.js');
+const WebSocket = require('./websocket');
 
 const PORT = 5000;
 
