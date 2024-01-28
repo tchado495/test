@@ -2,20 +2,10 @@
 //const WebSocket = require('ws');
 //const WebSocket = require('./ws/lib/websocket.js');
 
-'use strict';
+//'use strict';
 
-const https = require('https');
-const http = require('http');
-const net = require('net');
-const tls = require('tls');
-const { randomBytes, createHash } = require('crypto');
-const { Duplex, Readable } = require('stream');
-const { URL } = require('url');
-
-const PerMessageDeflate = require('./permessage-deflate');
-const Receiver = require('./receiver');
-const Sender = require('./sender');
-const WebSocket = require('./websocket');
+import 'node-modules/ws/lib/websocket.js'
+//const WebSocket = require('./websocket');
 
 const PORT = 5000;
 
