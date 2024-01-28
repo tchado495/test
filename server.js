@@ -5,14 +5,14 @@
 //'use strict';
 //import WebSocket from './ws'
 //const WebSocket = require('./websocket');
-const ws = new WebSocket("wss://echo.websocket.org");
+const wsServer = new WebSocket("wss://echo.websocket.org:5000");
 
 const PORT = 5000;
 
 //const wsServer = new WebSocket.Server({
-const wsServer = new ws.Server({
-    port: PORT
-});
+//const wsServer = new ws.Server({
+    //port: PORT
+//});
 
 wsServer.on('connection', function (socket) {
     // Some feedback on the console
