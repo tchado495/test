@@ -5,7 +5,7 @@
 //const serverAddress = 'wss://simple-websocket-server-echo.glitch.me/';
 //const serverAddress = "ws://185.199.108.153:5000";
 //const serverAddress = 'wss://testwebsocket.github.io/';
-const serverAddress = "ws://192.168.43.1:5000";
+const serverAddress = "ws://192.168.43.89:5000";
 
 const ws = new WebSocket(serverAddress, {
     headers: {
