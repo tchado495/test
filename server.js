@@ -1,41 +1,23 @@
 
-//const WebSocket = require('ws');
-//const WebSocket = require('./ws/lib/websocket.js');
+const WebSocket = require('ws');
 
-//'use strict';
-//import WebSocket from './ws'
-//const WebSocket = require('./websocket');
-const PORT = 5000;
-const wsServer = new WebSocket("ws://185.199.108.153:5000");
-//const wsServer = new wsServer({port: PORT}, function(){
-    //console.log("WS Server listening on: ws:://localhost", PORT);
-//});
+// const serverAddress = "ws://127.0.0.1:5000";
+//const serverAddress = 'wss://simple-websocket-server-echo.glitch.me/';
+//const serverAddress = "ws://185.199.108.153:5000";
+//const serverAddress = 'wss://testwebsocket.github.io/';
+const serverAddress = "ws://192.168.43.1:5000";
 
-//const wsServer = new WebSocket.Server({
-//const wsServer = new ws.Server({
-    //port: PORT
-//});
-
-wsServer.on('connection', function (socket) {
-    // Some feedback on the console
-    console.log("A client just connected");
-
-    // Attach some behavior to the incoming socket
-    socket.on('message', function (msg) {
-        console.log("Received message from client: "  + msg);
-        // socket.send("Take this back: " + msg);
-
-        // Broadcast that message to all connected clients
-        wsServer.clients.forEach(function (client) {
-            client.send("Someone said: " + msg);
-        });
-
-    });
-
-    socket.on('close', function () {
-        console.log('Client disconnected');
-    })
-
+const ws = new WebSocket(serverAddress, {
+    headers: {
+        "user-agent": "Mozilla"
+    }
 });
 
-console.log( (new Date()) + " Server is listening on port " + PORT);
+ws.on('open', function() {
+    ws.send("Hello from PCamp!");
+});
+
+ws.on('message', function(msg) {
+    console.log("Received msg from the server: " + msg);
+});
+
