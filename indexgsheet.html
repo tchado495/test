@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML form submit to Google Sheet</title>
+</head>
+
+<body style="background-color:#eee">
+    <div class="container text-center">
+        <br>
+        <h1 style="margin-left:30px;">Veuillez soumettre votre demande </h1>
+        <br>
+
+        <h1 style="margin-left:30px;">- Contactez nous</h1>
+	<div>
+		<input style="margin-top:50px;margin-left:30px;width:300px;height:30px;border-radius:5px;background-color:#fff" type="email" id="email" placeholder="Email" name="Email">
+		<button style="margin-left:10px;width:100px;height:40px;border-radius:25px;background-color:#008;color: #eee" onclick="GetService()">Envoyer</button>
+	</div>
+        <div>
+		 <input type="text" style="margin-top:45px;margin-left:30px;width:600px;height:200px;border-radius:25px" id="textarea" placeholder="Entrez votre message" name="Message">
+	</div>       
+        
+    </div>
+
+    
+
+    <script>
+
+	window.onresize = function(event){
+		let messagetext = document.getElementById('textarea');
+		let emailtext = document.getElementById('email');
+                var w = messagetext.style.width; var x = window.innerWidth - 50; var xw = x.toString();
+		 var wt = ""; //alert(w.length);
+		for(let i = 0; i<w.length; i++){
+			if(w[i]=='p'){
+				break;
+			}else{
+				wt = wt + w[0];
+			}			
+		}
+		var wtn = Number(wt);
+		if(window.innerWidth <= wtn+20){
+			messagetext.style.width = xw + "px";
+			emailtext.style.width = "200px";
+		}else{
+			if(window.innerWidth > 800){
+			messagetext.style.width = "600px";
+			emailtext.style.width = "300px";
+			}
+		}
+	}
+        //<form action="b6ad4f88a163af828747f176fe23e482" method="post">
+        //<input type="text" name="Email" style="height:300px;width:500px" placeholder="Enter Text">
+        function GetService() {
+            var email = document.getElementById('email').value;
+            var subject = "test";
+            var text = document.getElementById('textarea').value;
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzEiSERAi7EUUpT0RQjuFr_Tz7dvQVCYdqos2VROpFJ129W6M6NIjtNCjKbUuWI8K2LjQ/exec';
+            const FD = new FormData(); alert(email); alert(text);
+            FD.append("Date", "123456"); FD.append("Email", email);
+            FD.append("Name", text);
+            fetch(scriptURL, { method: 'POST', body: JSON.stringify({ Date: '123456', Email: email, Message: text }) })
+                .then(response => alert("Message envoyé !"))
+                .catch(error => console.error('Error!', error.message))
+        }
+    </script>
+
+
+</body>
+
+</html>
